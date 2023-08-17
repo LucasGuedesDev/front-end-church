@@ -1,0 +1,17 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let carros of cars">
+        <td>{{ carros["id"] }}</td>
+        <td>{{ carros["name"] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
