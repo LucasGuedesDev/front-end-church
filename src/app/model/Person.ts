@@ -1,6 +1,6 @@
 import { Church } from "./Church"
 
-export class Member{
+export class Person{
   id?: number
   ri!: string
   name!: string

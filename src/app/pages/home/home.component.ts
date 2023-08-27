@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { Member } from 'src/app/model/Person';
+import { Person } from 'src/app/model/Person';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -12,10 +12,10 @@ import { ApiService } from 'src/app/services/api.service';
 
 
 export class HomeComponent implements OnInit {
-  members:Member[] = []
+  members:Person[] = []
   frmPerson!: FormGroup;
   displayedColumns: string[] = ['ri', 'name', 'email', 'office', 'congregation', 'sector' ,'regional'];
-  dataSource = new MatTableDataSource<Member>();
+  dataSource = new MatTableDataSource<Person>();
 
   constructor(
     private service:ApiService,
@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
 
   createFormPersonBlank(){
     this.frmPerson = this.frmBuilder.group({
+      ri: [''],
       name: [''],
       email: [''],
       office: [''],
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
 
   getAllMembers(){
     this.service.getAllMembers().subscribe({
-      next:(data: Member[]) => {
+      next:(data: Person[]) => {
         this.members = data;
         this.dataSource = new MatTableDataSource(this.members)
         console.log(this.members)

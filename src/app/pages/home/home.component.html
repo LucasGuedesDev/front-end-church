@@ -9,45 +9,45 @@
     <!-- Position Column -->
     <ng-container matColumnDef="ri">
       <th mat-header-cell *matHeaderCellDef> RI </th>
-      <td mat-cell *matCellDef="let element"> {{element.ri}} </td>
+      <td mat-cell *matCellDef="let person"> {{person.ri}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let person"> {{person.name}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="office">
       <th mat-header-cell *matHeaderCellDef> Cargo </th>
-      <td mat-cell *matCellDef="let element"> {{element.office}} </td>
+      <td mat-cell *matCellDef="let person"> {{person.office}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> E-mail </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      <td mat-cell *matCellDef="let person"> {{person.email}} </td>
     </ng-container>
 
        <!-- Symbol Column -->1
        <ng-container matColumnDef="regional">
         <th mat-header-cell *matHeaderCellDef> Regional</th>
-        <td mat-cell *matCellDef="let element"> {{element.church.regional}} </td>
+        <td mat-cell *matCellDef="let person"> {{person.church.regional}} </td>
       </ng-container>
 
 
     <!-- Symbol Column -->1
     <ng-container matColumnDef="sector">
       <th mat-header-cell *matHeaderCellDef> Setor</th>
-      <td mat-cell *matCellDef="let element"> {{element.church.sector}} </td>
+      <td mat-cell *matCellDef="let person"> {{person.church.sector}} </td>
     </ng-container>
 
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="congregation">
       <th mat-header-cell *matHeaderCellDef> Congregação </th>
-      <td mat-cell *matCellDef="let element"> {{element.church.nameCongregation}} </td>
+      <td mat-cell *matCellDef="let person"> {{person.church.nameCongregation}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
