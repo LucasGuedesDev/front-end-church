@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Member } from '../model/Cars';
+import {  Person } from '../model/Person';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers():Observable<Member[]>{
-      return this.http.get<Member[]>('http://localhost:8080/carros');
+  getAllMembers():Observable<Person[]>{
+      return this.http.get<Person[]>('http://localhost:8080/membros');
   }
 }

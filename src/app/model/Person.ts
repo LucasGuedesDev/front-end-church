@@ -1,13 +1,11 @@
-export class Member{
+import { Church } from "./Church"
+
+export class Person{
   id?: number
+  ri!: string
   name!: string
   office!: string
   consecrationDate!: Date
-  congregation!: string
-  sector!: string
-  regional!: string
-  nameFather!: string
-  nameMother!: string
   dateBirth!: Date
   naturalness!: string
   uf!: string
@@ -28,7 +26,7 @@ export class Member{
   baptizedHe!: string
   dateBaptizedHe!: Date
   dateBaptized!: Date
-  church!: string
+  church!: Church
   churchCity!: string
   churchUf!: string
   dateAdmission!: Date

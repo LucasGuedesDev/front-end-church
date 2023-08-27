@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Member } from 'src/app/model/Cars';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { Person } from 'src/app/model/Person';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -7,18 +9,50 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  cars!:Member[]
 
-  constructor(private service:ApiService) { }
+
+export class HomeComponent implements OnInit {
+  members:Person[] = []
+  frmPerson!: FormGroup;
+  displayedColumns: string[] = ['ri', 'name', 'email', 'office', 'congregation', 'sector' ,'regional'];
+  dataSource = new MatTableDataSource<Person>();
+
+  constructor(
+    private service:ApiService,
+    private frmBuilder: FormBuilder
+    ) {
+      this.createFormPersonBlank();
+    }
 
   ngOnInit(): void {
-    this.service.getAllUsers().subscribe({
-      next:(data: Member[]) => {
-        this.cars = data;
-        console.log(this.cars)
+    this.getAllMembers()
+  }
+
+  createFormPersonBlank(){
+    this.frmPerson = this.frmBuilder.group({
+      ri: [''],
+      name: [''],
+      email: [''],
+      office: [''],
+      congregation: [''],
+      sector: [''],
+      regional: ['']
+    })
+  }
+
+  getAllMembers(){
+    this.service.getAllMembers().subscribe({
+      next:(data: Person[]) => {
+        this.members = data;
+        this.dataSource = new MatTableDataSource(this.members)
+        console.log(this.members)
       }
     })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
