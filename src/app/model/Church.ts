@@ -10,5 +10,4 @@ export class Church{
   neighborhood!: string
   city!: string
   isRent!: boolean
-
 }
