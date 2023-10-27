@@ -2,69 +2,112 @@
   <mat-stepper linear>
     <form [formGroup]="frmPerson">
       <mat-step label="Membro">
-        <mat-card class="mat-elevation-z6" style="margin-top: 20px;">
-        <mat-toolbar color="primary" style="margin-top: 15px;">
-          <span>Cadastro de Membro</span>
-      </mat-toolbar>
-        <mat-form-field appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="name" />
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>email</mat-label>
-          <input type="email" matInput placeholder="Placeholder" formControlName="email" />
-        </mat-form-field>
-        <div class="col" style="width: 100%;">
-          <mat-form-field appearance="outline" style="width: 50%;">
-            <mat-label>Telefone Residêncial</mat-label>
-            <input type="tel" matInput placeholder="Placeholder" formControlName="foneRes" />
-          </mat-form-field>
-          <mat-form-field appearance="outline" style="width: 48.7%; margin-left: 15px;">
-            <mat-label>Telefone Celular</mat-label>
-            <input type="tel" matInput placeholder="Placeholder" formControlName="foneCel" />
-          </mat-form-field>
-        </div>
-        <div class="col" style="width: 100%;">
-          <mat-form-field appearance="outline" style="width: 50%;">
-            <mat-label>CPF</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="cpf" />
-          </mat-form-field>
-          <mat-form-field appearance="outline" style="width: 48.7%; margin-left: 15px;">
-            <mat-label>RG</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="rg" />
-          </mat-form-field>
-        </div>
-        <mat-form-field appearance="outline">
-          <mat-label>Estado Cívil</mat-label>
-          <mat-select formControlName="maritalStatus">
-            <mat-option *ngFor="let maritalstatus of statusMaritals" [value]="maritalstatus.value">
-              {{ maritalstatus.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-radio-group aria-label="Gênero">
-          <label id="example-radio-group-label">Gênero</label>
-          <br />
-          <mat-radio-button value="1">Masculino</mat-radio-button>
-          <mat-radio-button value="2" style="margin-left: 15px;">Feminino</mat-radio-button>
-        </mat-radio-group>
-        </mat-card>
-
-        <mat-card class="mat-elevation-z6" style="margin-top: 20px;">
-        <mat-toolbar color="primary" style="margin-top: 15px;">
-            <span>Cadastro de congregação</span>
-        </mat-toolbar>
-        <mat-expansion-panel >
-          <mat-expansion-panel-header >
-          </mat-expansion-panel-header>
+        <mat-card class="mat-elevation-z6" style="margin-top: 20px">
+          <mat-toolbar color="primary" style="margin-top: 15px">
+            <span>Cadastro de Membro</span>
+          </mat-toolbar>
           <mat-form-field appearance="outline">
-            <mat-label>Congregação</mat-label>
-            <mat-select formControlName="church">
-              <mat-option *ngFor="let church of churchs" [value]="church.value">
-                {{ church.viewValue }}
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="name" />
+            <mat-error
+                  *ngIf="
+                    frmPerson.get('name')?.hasError('required') &&
+                    frmPerson.get('name')?.touched
+                  "
+                >
+                  *Por favor informe seu nome
+                </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="Placeholder"
+              formControlName="email"
+            />
+            <mat-error
+            *ngIf="
+              frmPerson.get('email')?.hasError('pattern') &&
+              frmPerson.get('email')?.touched
+            "
+          >
+            *Email inválido
+          </mat-error>
+          </mat-form-field>
+          <div class="col" style="width: 100%">
+            <mat-form-field appearance="outline" style="width: 50%">
+              <mat-label>Telefone Residêncial</mat-label>
+              <input
+                type="tel"
+                matInput
+                placeholder="Placeholder"
+                formControlName="foneRes"
+              />
+            </mat-form-field>
+            <mat-form-field
+              appearance="outline"
+              style="width: 48.7%; margin-left: 15px"
+            >
+              <mat-label>Telefone Celular</mat-label>
+              <input
+                type="tel"
+                matInput
+                placeholder="Placeholder"
+                formControlName="foneCel"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col" style="width: 100%">
+            <mat-form-field appearance="outline" style="width: 50%">
+              <mat-label>CPF</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="cpf" />
+              <mat-error
+              *ngIf="
+                frmPerson.get('cpf')?.hasError('required') &&
+                frmPerson.get('cpf')?.touched
+              "
+            >
+              *Por favor informe seu CPF
+            </mat-error>
+            </mat-form-field>
+            <mat-form-field
+              appearance="outline"
+              style="width: 48.7%; margin-left: 15px"
+            >
+              <mat-label>RG</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="rg" />
+              <mat-error
+              *ngIf="
+                frmPerson.get('rg')?.hasError('required') &&
+                frmPerson.get('rg')?.touched
+              "
+            >
+              *Por favor informe seu RG
+            </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col" style="width: 100%;">
+          <mat-form-field appearance="outline" style="width: 50%;">
+            <mat-label>Estado Cívil</mat-label>
+            <mat-select formControlName="maritalStatus">
+              <mat-option
+                *ngFor="let maritalstatus of statusMaritals"
+                [value]="maritalstatus.value"
+              >
+                {{ maritalstatus.viewValue }}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Genêro</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option *ngFor="let gender of statusGender" [value]="gender.value">
+                {{ gender.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
           <mat-form-field appearance="outline">
             <mat-label>Tipo</mat-label>
             <mat-select formControlName="type">
@@ -72,49 +115,113 @@
                 {{ type.viewValue }}
               </mat-option>
             </mat-select>
+            <mat-error
+            *ngIf="
+              frmPerson.get('type')?.hasError('required') &&
+              frmPerson.get('type')?.touched
+            "
+          >
+            *Por favor informe sua atual posição ministerial
+          </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Cargo</mat-label>
-            <mat-select name="office">
+            <mat-select formControlName="office">
               <mat-option *ngFor="let office of offices" [value]="office.value">
                 {{ office.viewValue }}
               </mat-option>
             </mat-select>
+            <mat-error
+            *ngIf="
+              frmPerson.get('office')?.hasError('required') &&
+              frmPerson.get('office')?.touched
+            "
+          >
+            *Por favor informe seu atual cargo ministerial
+          </mat-error>
           </mat-form-field>
-          <div class="col" style="width: 100%;">
-          <mat-form-field appearance="outline" style="width: 50%;">
-            <mat-label>Data de Nascimento</mat-label>
-            <input type="date" matInput formControlName="dateBirth"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline" style="width: 48.7%; margin-left: 15px;">
-            <mat-label>Data de Conversão</mat-label>
-            <input type="date" matInput />
-          </mat-form-field>
+          <div class="col" style="width: 100%">
+            <mat-form-field appearance="outline" style="width: 50%">
+              <mat-label>Data de Nascimento</mat-label>
+              <input type="date" matInput formControlName="dateBirth" />
+              <mat-error
+              *ngIf="
+                frmPerson.get('dateBirth')?.hasError('required') &&
+                frmPerson.get('dateBirth')?.touched
+              "
+            >
+              *Por favor informe o dia em que nasceu
+            </mat-error>
+            </mat-form-field>
+            <mat-form-field
+              appearance="outline"
+              style="width: 48.7%; margin-left: 15px"
+            >
+              <mat-label>Data de Conversão</mat-label>
+              <input type="date" matInput />
+            </mat-form-field>
           </div>
-          <div class="col" style="width: 100%;">
-          <mat-form-field appearance="outline" style="width: 50%;">
-            <mat-label>Data de Batismo</mat-label>
-            <input type="date" matInput>
-          </mat-form-field>
-          <mat-form-field appearance="outline" style="width: 48.7%; margin-left: 15px;">
-            <mat-label>Data de Batismo com Espírito Santo</mat-label>
-            <input type="date" matInput>
-          </mat-form-field>
+          <div class="col" style="width: 100%">
+            <mat-form-field appearance="outline" style="width: 50%">
+              <mat-label>Data de Batismo</mat-label>
+              <input type="date" matInput formControlName="dateBt" />
+              <mat-error
+              *ngIf="
+                frmPerson.get('dateBt')?.hasError('required') &&
+                frmPerson.get('dateBt')?.touched
+              "
+            >
+              *Por favor informe o dia do seu batismo
+            </mat-error>
+            </mat-form-field>
+            <mat-form-field
+              appearance="outline"
+              style="width: 48.7%; margin-left: 15px"
+            >
+              <mat-label>Data de Batismo com Espírito Santo</mat-label>
+              <input type="date" matInput />
+            </mat-form-field>
           </div>
-          <div class="form-group">
-            <label for="observacao">Observação</label>
-            <textarea
-              class="form-control"
-              rows="3"
-              name="observacao"
-              id="observacao"
-            ></textarea>
-          </div>
-        </mat-expansion-panel>
         </mat-card>
 
-        <input type="submit" class="btn btn-primary mt-4" value="Salvar" />
-        <a href="#" class="btn btn-secondary mt-4 ml-2">Cancelar</a>
+        <mat-card class="mat-elevation-z6" style="margin-top: 20px">
+          <mat-toolbar color="primary" style="margin-top: 15px">
+            <span>Cadastro de congregação</span>
+          </mat-toolbar>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header> </mat-expansion-panel-header>
+            <mat-form-field appearance="outline">
+              <mat-label>Congregação</mat-label>
+              <mat-select formControlName="church"(selectionChange)=" valueInputNameCongregation($event)">
+                <mat-option
+                  *ngFor="let church of listChurch"
+                  [value]="church.nameCongregation"
+                >
+                  {{ church.nameCongregation }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+              *ngIf="
+                frmPerson.get('church')?.hasError('required') &&
+                frmPerson.get('church')?.touched
+              "
+            >
+              *Por favor informe o nome de sua congregação
+            </mat-error>
+            </mat-form-field>
+            <div class="form-group">
+              <label for="observacao">Observação</label>
+              <textarea
+                class="form-control"
+                rows="3"
+                name="observacao"
+                id="observacao"
+              ></textarea>
+            </div>
+          </mat-expansion-panel>
+        </mat-card>
+
+        <button mat-raised-button color="primary" style="margin-top: 10px; float: right; ">Avançar</button>
       </mat-step>
 
       <mat-step label="CEP">
@@ -125,6 +232,7 @@
               matInput
               placeholder="Digite seu CEP"
               formControlName="cep"
+              (change)="cepInputValue($event.target)"
               required
             />
           </mat-form-field>
@@ -144,7 +252,7 @@
               matInput
               placeholder="Digite sua Número"
               class="number-road"
-              formControlName="numberRoad"
+              formControlName="numberHome"
               required
             />
           </mat-form-field>
@@ -185,6 +293,7 @@
               required
             />
           </mat-form-field>
+          <button mat-raised-button color="primary" style="margin-top: 10px; float: right; ">Avançar</button>
         </div>
       </mat-step>
     </form>
@@ -193,7 +302,7 @@
       <p>Agora estamos finalizando!</p>
       <div>
         <button mat-raised-button matStepperPrevious>Voltar</button>
-        <button mat-raised-button color="primary">Concluir</button>
+        <button mat-raised-button color="primary" (click)="saveFormsPerson()">Salvar</button>
       </div>
     </mat-step>
   </mat-stepper>

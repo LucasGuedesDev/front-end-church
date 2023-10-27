@@ -57,3 +57,11 @@ input::-webkit-inner-spin-button {
 mat-form-field{
   width: 100%;
 }
+
+.validation-form{
+  color: red;
+  font-weight: bold;
+  margin-top: -20px;
+}
+
+

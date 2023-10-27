@@ -6,15 +6,20 @@ export class Person{
   ri!: string
   name!: string
   type!: string
+  isMember!: boolean
+	isChurchWorker!: boolean
   office!: string
   consecrationDate!: Date
   dateBirth!: Date
   naturalness!: string
   uf!: string
-  sex!: string
+  gender!: string
   cep!: Cep
+  address!: string
+	neighborhood!: string
+	city!: string
+	numberHome!: string
   country!: string
-  numberRoad!: number
   complementObservation!: string
   foneRes!: string
   foneCel!: string
