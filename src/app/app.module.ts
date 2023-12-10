@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterMembersComponent } from './pages/register-members/register-members.component';
+import { EditMembersComponent } from './pages/edit-members/edit-members.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RegisterMembersComponent } from './pages/register-members/register-memb
     HomeComponent,
     FormularioComponent,
     RegisterMembersComponent,
+    EditMembersComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,16 +15,20 @@ export class ApiService {
       return this.http.get<Person[]>('http://localhost:8080/membros');
   }
 
+  getMemberById(id:number):Observable<Person>{
+    return this.http.get<Person>(`http://localhost:8080/membros/${id}`);
+  }
+
   getAllChurchs():Observable<Church[]>{
     return this.http.get<Church[]>('http://localhost:8080/igrejas');
 }
 
- createPerson(person:Person):Observable<Person>{
-  return this.http.post<Person>('http://localhost:8080/membros', person)
- }
-
  getByNameCongregation(nameCongregation:string):Observable<Church>{
   return this.http.get<Church>(`http://localhost:8080/igrejas/congregacao/${nameCongregation}`)
+ }
+
+ createPerson(person:Person):Observable<Person>{
+  return this.http.post<Person>('http://localhost:8080/membros', person)
  }
 
 }
