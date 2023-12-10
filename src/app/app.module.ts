@@ -9,6 +9,7 @@ import { FormularioComponent } from './carros/formulario/formulario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterMembersComponent } from './pages/register-members/register-members.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     HomeComponent,
     FormularioComponent,
+    RegisterMembersComponent,
   ],
   imports: [
     BrowserModule,

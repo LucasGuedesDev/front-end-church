@@ -1,20 +1,26 @@
+import { Cep } from "./Cep"
 import { Church } from "./Church"
 
 export class Person{
   id?: number
   ri!: string
   name!: string
+  type!: string
+  isMember!: boolean
+	isChurchWorker!: boolean
   office!: string
   consecrationDate!: Date
   dateBirth!: Date
   naturalness!: string
   uf!: string
-  sex!: string
-  cep!: string
+  gender!: string
+  cep!: Cep
   address!: string
-  neighborhood!: string
-  city!: string
+	neighborhood!: string
+	city!: string
+	numberHome!: string
   country!: string
+  complementObservation!: string
   foneRes!: string
   foneCel!: string
   email!: string
@@ -27,8 +33,6 @@ export class Person{
   dateBaptizedHe!: Date
   dateBaptized!: Date
   church!: Church
-  churchCity!: string
-  churchUf!: string
   dateAdmission!: Date
   dateConversion!: Date
   churchOrigin!: string

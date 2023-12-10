@@ -1,0 +1,67 @@
+/* PARA ESCONDER O SCROLL DO input="number" */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.number-road{
+  position: relative;
+  top: 7px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.complement label{
+  position: relative;
+  top: 24px;
+}
+.complement
+#number-complement{
+  position: relative;
+  top: 25px;
+  right: -4px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.neighborhood{
+  position: relative;
+  top: 23px;
+}
+
+.neighborhood
+#name-neighborhood{
+  position: relative;
+  right: -4px;
+  border-radius: 5px;
+}
+
+.locality{
+  position: relative;
+  top: 20px;
+}
+
+.locality
+#name-locality{
+  position: relative;
+  right: -4px;
+  border-radius: 5px;
+  top: 2px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+.validation-form{
+  color: red;
+  font-weight: bold;
+  margin-top: -20px;
+}
+
+
