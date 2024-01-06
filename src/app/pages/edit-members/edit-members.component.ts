@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { Cep } from 'src/app/model/Cep';
 import { Church } from 'src/app/model/Church';
 import { ApiCepService } from 'src/app/services/api-cep.service';
@@ -32,22 +33,15 @@ interface GenderStatus {
 @Component({
   selector: 'app-edit-members',
   templateUrl: './edit-members.component.html',
-  styleUrls: ['./edit-members.component.css']
+  styleUrls: ['./edit-members.component.css'],
 })
 export class EditMembersComponent implements OnInit {
   frmEditPerson!: FormGroup;
   listChurch: Church[] = []
   nameChurch: string = "";
   resultCep!: Cep;
-
-  constructor(private _formBuilder: FormBuilder,
-    private ApiCepService: ApiCepService,
-    private snackBar: MatSnackBar, private apiBack: ApiService) {}
-
-  ngOnInit(): void {
-   this.createFormPersonBlank();
-   this.apiBack.getMemberById(4).subscribe(member => {console.log(member)});
-  }
+  id!: number;
+  nomeIgreja!: string;
 
   offices: Office[] = [
     { value: 'Jovem Obreiro-0', viewValue: 'Jovem Obreiro' },
@@ -70,6 +64,16 @@ export class EditMembersComponent implements OnInit {
     { value: 'Masculino-0', viewValue: 'Masculino' },
     { value: 'Feminino-1', viewValue: 'Feminino' },
   ];
+
+  constructor(private _formBuilder: FormBuilder,
+    private ApiCepService: ApiCepService,
+    private snackBar: MatSnackBar, private apiBack: ApiService, private route:ActivatedRoute) {}
+
+  ngOnInit(): void {
+   this.createFormPersonBlank();
+   this.id = this.route.snapshot.params['id'];
+   this.populateFormsData();
+  }
 
   createFormPersonBlank() {
     this.frmEditPerson = this._formBuilder.group({
@@ -132,6 +136,18 @@ export class EditMembersComponent implements OnInit {
     this.frmEditPerson.controls['uf'].setValue(data.uf);
   }
 
+  populateFormsData(){
+    this.apiBack.getMemberById(this.id).subscribe(member => {
+    console.log(member);
+    this.frmEditPerson.controls['logradouro'].setValue(member.address);
+    this.frmEditPerson.controls['bairro'].setValue(member.neighborhood);
+    this.frmEditPerson.controls['localidade'].setValue(member.city);
+    this.frmEditPerson.controls['uf'].setValue(member.uf);
+    this.nomeIgreja=member.church.nameCongregation;
+    this.frmEditPerson.patchValue(member);
+    });
+  }
+
   openSnackBar(message: string) {
     this.snackBar.open(message, '', { duration: 3000 })
   }
@@ -157,4 +173,5 @@ export class EditMembersComponent implements OnInit {
     this.nameChurch = nameCongregation.value;
 
   }
+
 }

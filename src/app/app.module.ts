@@ -11,6 +11,7 @@ import { MaterialModule } from './shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterMembersComponent } from './pages/register-members/register-members.component';
 import { EditMembersComponent } from './pages/edit-members/edit-members.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EditMembersComponent } from './pages/edit-members/edit-members.componen
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

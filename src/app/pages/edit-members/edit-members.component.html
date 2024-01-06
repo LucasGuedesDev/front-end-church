@@ -18,22 +18,16 @@
                   *Por favor informe seu nome
                 </mat-error>
           </mat-form-field>
+
+
           <mat-form-field appearance="outline">
-            <mat-label>email</mat-label>
+            <mat-label>Nome Igreja</mat-label>
             <input
-              type="email"
+              type="text"
               matInput
               placeholder="Placeholder"
-              formControlName="email"
+              [value]="nomeIgreja"
             />
-            <mat-error
-            *ngIf="
-              frmEditPerson.get('email')?.hasError('pattern') &&
-              frmEditPerson.get('email')?.touched
-            "
-          >
-            *Email inválido
-          </mat-error>
           </mat-form-field>
           <div class="col" style="width: 100%">
             <mat-form-field appearance="outline" style="width: 50%">
@@ -206,7 +200,7 @@
               <mat-select formControlName="church"(selectionChange)=" valueInputNameCongregation($event)">
                 <mat-option
                   *ngFor="let church of listChurch"
-                  [value]="church.nameCongregation"
+                  [value]="church"
                 >
                   {{ church.nameCongregation }}
                 </mat-option>
