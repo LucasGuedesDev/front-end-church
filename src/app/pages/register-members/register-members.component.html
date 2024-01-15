@@ -164,11 +164,11 @@
           <div class="col" style="width: 100%">
             <mat-form-field appearance="outline" style="width: 50%">
               <mat-label>Data de Batismo</mat-label>
-              <input type="date" matInput formControlName="dateBt" />
+              <input type="date" matInput formControlName="dateBaptized" />
               <mat-error
               *ngIf="
-                frmPerson.get('dateBt')?.hasError('required') &&
-                frmPerson.get('dateBt')?.touched
+                frmPerson.get('dateBaptized')?.hasError('required') &&
+                frmPerson.get('dateBaptized')?.touched
               "
             >
               *Por favor informe o dia do seu batismo
