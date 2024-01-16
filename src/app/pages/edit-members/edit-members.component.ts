@@ -97,7 +97,7 @@ export class EditMembersComponent implements OnInit {
       cep: [""],
       logradouro: [""],
       numberHome: [""],
-      complementObservation: [""],
+      complemento: [""],
       bairro: [""],
       localidade: [""],
       uf: [""]
@@ -139,10 +139,10 @@ export class EditMembersComponent implements OnInit {
   populateFormsData(){
     this.apiBack.getMemberById(this.id).subscribe(member => {
     console.log(member);
-    this.frmEditPerson.controls['logradouro'].setValue(member.address);
-    this.frmEditPerson.controls['bairro'].setValue(member.neighborhood);
-    this.frmEditPerson.controls['localidade'].setValue(member.city);
-    this.frmEditPerson.controls['uf'].setValue(member.uf);
+    // this.frmEditPerson.controls['logradouro'].setValue(member.address);
+    // this.frmEditPerson.controls['bairro'].setValue(member.neighborhood);
+    // this.frmEditPerson.controls['localidade'].setValue(member.city);
+    // this.frmEditPerson.controls['uf'].setValue(member.uf);
     this.nomeIgreja=member.church.nameCongregation;
     this.frmEditPerson.patchValue(member);
     });

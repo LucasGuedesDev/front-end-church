@@ -105,7 +105,7 @@ export class RegisterMembersComponent implements OnInit {
       cep: [""],
       logradouro: [""],
       numberHome: [""],
-      complementObservation: [""],
+      complemento: [""],
       bairro: [""],
       localidade: [""],
       uf: [""]
